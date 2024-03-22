@@ -16,6 +16,18 @@ ArrayList::~ArrayList() {
 	delete this->arr;
 }
 
+bool ArrayList::suprime(int position){
+	if (position < 0 || position > size && !vacia()){
+		this->arr[position-1] = NULL;
+		for (size_t i = position-1; i < size; i++){
+			if(arr[i+1] != NULL)
+				this->arr[i] = this->arr[i+1];
+		}
+		
+	}
+	
+}
+
 bool ArrayList::inserta(Object* data, int position) {
 	if (position >= 0 || position < capacidad && size != capacidad){
 		for (int i = size; i > position; i--){
@@ -39,7 +51,7 @@ bool ArrayList::inserta(Object* data, int position) {
 			}
 		}
 		this->size++;
-		anula();
+
 		this->arr = temp;
 		return true;
 	}
@@ -47,7 +59,6 @@ bool ArrayList::inserta(Object* data, int position) {
 		return false;
 	}
 }
-
 void ArrayList::imprimeLista() {
 	for (int i = 0; i < size; i++){
 		if (i != size)
@@ -57,16 +68,12 @@ void ArrayList::imprimeLista() {
 		
 	}
 }
-
 bool ArrayList::vacia() {
 	if (size > 0)
 		return false;
 	else
 		return true;
 }
-
-
-
 void ArrayList::anula() {
 	for (int i = 0; i < this->size; i++) {
 		delete this->arr[i];

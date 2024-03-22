@@ -2,20 +2,20 @@
 #include <string>
 #include"Object.h"
 #include "TDALista.h"
-class ArrayList: public Object,TDALista{
+class ArrayList: public TDALista{
 public:
 	ArrayList();
 	~ArrayList();
-	virtual bool inserta(Object* data, int position) = 0;
-	virtual bool suprime(int) = 0;
-	virtual void anula() = 0;
-	virtual Object* recupera(int) = 0;
-	virtual Object* anterior(int) = 0;
-	virtual Object* siguiente(int) = 0;
-	virtual void imprimeLista() = 0;
-	virtual int localiza(Object*) = 0;
-	virtual bool vacia() = 0;
-	virtual void append(Object*) = 0;
+	virtual bool inserta(Object* data, int position) ;
+	virtual bool suprime(int);
+	virtual void anula();
+	virtual Object* recupera(int);
+	virtual Object* anterior(int);
+	virtual Object* siguiente(int);
+	virtual void imprimeLista();
+	virtual int localiza(Object*);
+	virtual bool vacia();
+	virtual void append(Object*);
 
 protected:
 	Object** arr;
