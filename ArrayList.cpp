@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 
+//Constructor de la clase ArrayList, tiene una capacidad predeterminada de 10
 ArrayList::ArrayList() {
 	this->capacidad = 10;
 	this->arr = new Object*[capacidad];
