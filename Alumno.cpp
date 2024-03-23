@@ -10,3 +10,9 @@ Alumno::Alumno(string name, int accNum){
 
 Alumno::~Alumno(){}
 
+string Alumno::getNombre(){
+    return this->nombreAlumno;
+}
+int Alumno::getNumeroCuenta(){
+    return this->numeroCuenta;
+}
