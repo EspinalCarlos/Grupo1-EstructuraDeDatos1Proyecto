@@ -22,8 +22,12 @@ bool ArrayList::suprime(int position){
 		for (size_t i = position-1; i < size; i++){
 			if(arr[i+1] != NULL)
 				this->arr[i] = this->arr[i+1];
+
 		}
-		
+		return true;
+	}
+	else {
+		return false;
 	}
 	
 }
@@ -51,12 +55,34 @@ bool ArrayList::inserta(Object* data, int position) {
 			}
 		}
 		this->size++;
-
+		anula();
 		this->arr = temp;
 		return true;
 	}
 	else {
 		return false;
+	}
+}
+
+void ArrayList::append(Object* data) {
+	if (size < capacidad){
+		this->arr[size - 1] = data; \
+		size++;
+	}
+	else if (size >= capacidad) {
+		Object** temp = new Object* [capacidad + 1];
+		for (size_t i = 0; i < capacidad+1; i++){
+			if (i != (capacidad + 1) - 1) {
+				this->arr[i] = temp[i];
+			}
+			else if(i == (capacidad+1)-1){
+				this->arr[i] = data;
+			}
+		}
+		capacidad++;
+		size++;
+		anula();
+		this->arr = temp;
 	}
 }
 void ArrayList::imprimeLista() {
@@ -79,6 +105,35 @@ void ArrayList::anula() {
 		delete this->arr[i];
 	}
 }
+
+Object* ArrayList::recupera(int position) {
+	if (position > 0 || position < size){
+		return this->arr[position - 1];
+	}
+}
+
+Object* ArrayList::anterior(int position) {
+	if (position > 1 || position < size) {
+		return this->arr[(position - 1)-1];
+	}
+}
+
+Object* ArrayList::siguiente(int position) {
+	if (position > 0 || position < size - 1) {
+		return this->arr[(position - 1) + 1];
+	}
+}
+
+int ArrayList::localiza(Object* dato) {
+	int index = -1;
+	for (size_t i = 0; i < size; i++){
+		if (dato->equals(this->arr[i])){
+			index = i;
+		}
+	}
+	return index;
+}
+
 
 
 

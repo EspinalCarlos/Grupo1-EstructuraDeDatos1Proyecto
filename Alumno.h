@@ -7,11 +7,13 @@ using namespace std;
 class Alumno: public Object{
 private:
     string nombreAlumno;
-    int numeroCuenta;
+    string numeroCuenta;
 
 public:
-    Alumno(string name, int accNumber);
+    Alumno(string name, string accNumber);
     ~Alumno();
+    virtual bool equals(Object*)override;
+    virtual string toString()override;
     string getNombre();
-    int getNumeroCuenta();
+    string getNumeroCuenta();
 };

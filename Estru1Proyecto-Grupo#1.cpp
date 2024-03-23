@@ -5,6 +5,7 @@ using namespace std;
 #include "Object.h"
 #include "TDALista.h"
 #include "ArrayList.h"
+#include "Alumno.h"
 #include <string>
 
 
@@ -16,14 +17,15 @@ void menuListas(){
     cout << "---- Operaciones con Listas ----\n\n1. Insertar Elemento\n2.Imprimir Elementos\n3.Buscar Elemento\n4. Borrar Elemento\n5. Ver si esta vacia\n6. Obtener elemento por posicion\n7. Obtener Siguiente\n8. Obtener Anterior\n9. Borrar todos los elementos de la lista\n10. Regresar al menu anterior ";
 }
 
-int main(){
+int main(int argc, const char* argv[]){
     int opcionMM,opcionLists,opcionListsP;
     TDALista* lista = NULL;
     
     do{
         string nombreA;
-        int numeroC;
-
+        string numeroC;
+        Alumno* a;
+        menuPrincipal();
         cin >> opcionMM;
         switch (opcionMM){
         case 1:
@@ -47,8 +49,9 @@ int main(){
                 cin >> nombreA;
                 cout << "\nIngrese el numero de cuenta del alumno: ";
                 cin >> numeroC;
-               
-
+                a = new Alumno(nombreA, numeroC);
+                lista->append(a);
+                cout << "\nAlumno insertado a la lista correctamente";
                 break;
             case 2:
 
