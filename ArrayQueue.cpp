@@ -4,7 +4,7 @@
 using namespace std;
 
 ArrayQueue::ArrayQueue() {
-	queueList = new Object[max_size];
+	queueList = new Object*[max_size];
 	index_last = 0;
 }
 
@@ -16,14 +16,14 @@ void ArrayQueue::queue(Object* element) {
 	if (index_last == max_size) {
 		int prev_size = max_size;	//guarda el tam viejo del arreglo antes de expandirlo
 		max_size = max_size * 2;
-		Object* temp = new Object[max_size];
+		Object** temp = new Object*[max_size];
 		for (int i = 0; i < prev_size; i++) {
 			temp[i] = queueList[i];
 		}
 		queueList = temp;
 		delete[] temp;
 	}
-	queueList[index_last] = *element;
+	queueList[index_last] = element;
 	index_last++;
 }
 
@@ -31,7 +31,7 @@ Object* ArrayQueue::dequeue() {
 	if (index_last == 0) {
 		return nullptr;
 	}
-	Object* element = &queueList[index_last];
+	Object* element = queueList[index_last];
 	for (int i = 0; i < index_last; i++) {
 		queueList[i] = queueList[i + 1];
 	}
@@ -43,7 +43,7 @@ Object* ArrayQueue::peek() {
 	if (&queueList[0] == nullptr) {
 		return nullptr;
 	}
-	return &queueList[0];
+	return queueList[0];
 }
 
 bool ArrayQueue::isEmpty() {
@@ -58,13 +58,13 @@ bool ArrayQueue::isEmpty() {
 void ArrayQueue::clear() {
 	index_last = 0;
 	delete[] queueList;
-	queueList = new Object[max_size];
+	queueList = new Object*[max_size];
 }
 
 void ArrayQueue::printQueue() {
 	if (index_last > 0) {
 		for (int i = 0; i < index_last; i++) {
-			cout << queueList[i].toString() << ", ";
+			cout << queueList[i]->toString() << ", ";
 		}
 	}
 	else {

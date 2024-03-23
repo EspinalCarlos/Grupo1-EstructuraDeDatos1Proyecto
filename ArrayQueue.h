@@ -5,7 +5,7 @@ class ArrayQueue : public TDACola
 {
 private:
 	int index_last;
-	Object* queueList;
+	Object** queueList;
 public:
 	ArrayQueue();
 	~ArrayQueue();
