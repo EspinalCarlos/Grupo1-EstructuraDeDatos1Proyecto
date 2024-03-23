@@ -22,6 +22,7 @@ int main(){
     
     do{
         string nombreA;
+        int numeroC;
 
         cin >> opcionMM;
         switch (opcionMM){
@@ -43,6 +44,10 @@ int main(){
             {
             case 1:
                 cout << "--- Insertar Alumno a la Lista ---\nIngrese el nombre completo del Alumno: ";
+                cin >> nombreA;
+                cout << "\nIngrese el numero de cuenta del alumno: ";
+                cin >> numeroC;
+               
 
                 break;
             case 2:
