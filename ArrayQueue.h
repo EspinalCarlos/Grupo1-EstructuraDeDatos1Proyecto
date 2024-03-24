@@ -2,8 +2,7 @@
 #include "TDACola.h"
 #include "Object.h"
 #include <string>
-class ArrayQueue : public TDACola
-{
+class ArrayQueue : public TDACola{
 private:
 	int index_last;
 	Object** queueList;

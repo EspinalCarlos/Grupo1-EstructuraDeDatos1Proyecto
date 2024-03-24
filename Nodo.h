@@ -12,5 +12,7 @@ public:
 	void setAnterior(Nodo*);
 	Nodo* getAnterior();
 	Nodo* getSiguiente();
+	void setDato(Object*);
+	Object* getDato();
 };
 

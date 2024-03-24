@@ -4,19 +4,19 @@
 using namespace std;
 
 ArrayQueue::ArrayQueue() {
-	queueList = new Object*[max_size];
+	queueList = new Object * [max_size];
 	index_last = 0;
 }
 
 ArrayQueue::~ArrayQueue() {
-	delete[] queueList;
+	//delete[] queueList;
 }
 
 void ArrayQueue::queue(Object* element) {
 	if (index_last == max_size) {
 		int prev_size = max_size;	//guarda el tam viejo del arreglo antes de expandirlo
 		max_size = max_size * 2;
-		Object** temp = new Object*[max_size];
+		Object** temp = new Object * [max_size];
 		for (int i = 0; i < prev_size; i++) {
 			temp[i] = queueList[i];
 		}
@@ -31,17 +31,16 @@ Object* ArrayQueue::dequeue() {
 	if (index_last == 0) {
 		return nullptr;
 	}
-	index_last--;
-	Object* element = queueList[0];
+	Object* element = queueList[index_last];
 	for (int i = 0; i < index_last; i++) {
 		queueList[i] = queueList[i + 1];
 	}
-	queueList[index_last + 1] = nullptr;
+	index_last--;
 	return element;
 }
 
 Object* ArrayQueue::peek() {
-	if (index_last == 0) {
+	if (&queueList[0] == nullptr) {
 		return nullptr;
 	}
 	return queueList[0];
@@ -59,7 +58,7 @@ bool ArrayQueue::isEmpty() {
 void ArrayQueue::clear() {
 	index_last = 0;
 	delete[] queueList;
-	queueList = new Object*[max_size];
+	queueList = new Object * [max_size];
 }
 
 void ArrayQueue::printQueue() {
@@ -71,5 +70,4 @@ void ArrayQueue::printQueue() {
 	else {
 		cout << "La cola esta vacia" << endl;
 	}
-	cout << "\n" << endl;
 }

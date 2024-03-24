@@ -20,3 +20,9 @@ Nodo* Nodo::getAnterior() {
 Nodo* Nodo::getSiguiente() {
 	return this->siguiente;
 }
+Object* Nodo::getDato() {
+	return this->dato;
+}
+void Nodo::setDato(Object* obj) {
+	this->dato = obj;
+}
