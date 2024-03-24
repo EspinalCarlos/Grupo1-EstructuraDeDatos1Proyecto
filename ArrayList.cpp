@@ -6,8 +6,10 @@ using namespace std;
 
 //Constructor de la clase ArrayList, tiene una capacidad predeterminada de 10
 ArrayList::ArrayList() {
-	this->capacidad = 10;
+	this->capacidad = 100;
+	this->size = 0;
 	this->arr = new Object*[capacidad];
+	
 }
 ArrayList::~ArrayList() {
 	for (int i = 0; i < this->size; i++) {
@@ -17,14 +19,16 @@ ArrayList::~ArrayList() {
 }
 
 bool ArrayList::suprime(int position){
-	if (position < 0 || position > size && !vacia()){
-		this->arr[position-1] = NULL;
-		for (size_t i = position-1; i < size; i++){
+	if (position > 0 || position < size && !vacia()){
+		delete this->arr[position-1];
+		for (size_t i = position-1; i < size-1; i++){
 			if(arr[i+1] != NULL)
 				this->arr[i] = this->arr[i+1];
 
 		}
+		this->size--;
 		return true;
+		
 	}
 	else {
 		return false;
@@ -88,9 +92,7 @@ void ArrayList::append(Object* data) {
 void ArrayList::imprimeLista() {
 	for (int i = 0; i < size; i++){
 		if (i != size)
-			cout << '[' << this->arr[i] << ', ';
-		else
-			cout << this->arr[i] << "] ";
+			cout << '[' << this->arr[i]->toString() << ']';
 		
 	}
 }
@@ -104,6 +106,7 @@ void ArrayList::anula() {
 	for (int i = 0; i < this->size; i++) {
 		delete this->arr[i];
 	}
+	this->size = 0;
 }
 
 Object* ArrayList::recupera(int position) {
@@ -113,25 +116,28 @@ Object* ArrayList::recupera(int position) {
 }
 
 Object* ArrayList::anterior(int position) {
-	if (position > 1 || position < size) {
+	if (position > 1 || position <= size) {
 		return this->arr[(position - 1)-1];
 	}
 }
 
 Object* ArrayList::siguiente(int position) {
-	if (position > 0 || position < size - 1) {
+	if (position > 0 || position <= size - 1) {
 		return this->arr[(position - 1) + 1];
 	}
 }
 
 int ArrayList::localiza(Object* dato) {
 	int index = -1;
-	for (size_t i = 0; i < size; i++){
+	for (size_t i = 0; i < this->size; i++){
 		if (dato->equals(this->arr[i])){
 			index = i;
 		}
 	}
-	return index;
+	return index+1;
+}
+int ArrayList::getCapacidad() {
+	return this->capacidad;
 }
 
 

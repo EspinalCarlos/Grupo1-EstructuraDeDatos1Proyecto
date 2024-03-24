@@ -18,16 +18,18 @@ string Alumno::getNumeroCuenta() {
     return this->numeroCuenta;
 }
 
-bool Alumno::equals(Object* obj) {
-    if (this == dynamic_cast<Alumno*>(obj)){
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
 string Alumno::toString() {
-    return numeroCuenta;
+    return nombreAlumno;
+}
+bool Alumno::equals(Object* obj) {
+    Alumno* a2 = dynamic_cast<Alumno*>(obj);
+    if (a2 != nullptr) {
+        if (this->getNumeroCuenta() == a2->getNumeroCuenta()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
 

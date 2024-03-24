@@ -15,6 +15,7 @@ public:
 	virtual int localiza(Object*)=0;
 	virtual bool vacia()=0;
 	virtual void append(Object*)=0;
+	virtual int getSize() { return this->size; }
 
 };
 

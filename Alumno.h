@@ -12,8 +12,8 @@ private:
 public:
     Alumno(string name, string accNumber);
     ~Alumno();
-    virtual bool equals(Object*)override;
     virtual string toString()override;
+    virtual bool equals(Object*)override;
     string getNombre();
     string getNumeroCuenta();
 };

@@ -16,7 +16,7 @@ public:
 	virtual int localiza(Object*);
 	virtual bool vacia();
 	virtual void append(Object*);
-
+	int getCapacidad();
 protected:
 	Object** arr;
 	int capacidad;

@@ -18,7 +18,7 @@ void menuListas(){
 }
 
 int main(int argc, const char* argv[]){
-    int opcionMM,opcionLists,opcionListsP;
+    int opcionMM,opcionLists,opcionListsP,addLoop, indiceInsert, localizaNum, indiceDelete, indicePORINDEX;
     TDALista* lista = NULL;
     
     do{
@@ -40,55 +40,127 @@ int main(int argc, const char* argv[]){
                     break;
            } 
             
-            menuListas();
-            cin >> opcionLists;
-            switch (opcionLists)
-            {
-            case 1:
-                cout << "--- Insertar Alumno a la Lista ---\nIngrese el nombre completo del Alumno: ";
-                cin >> nombreA;
-                cout << "\nIngrese el numero de cuenta del alumno: ";
-                cin >> numeroC;
-                a = new Alumno(nombreA, numeroC);
-                lista->append(a);
-                cout << "\nAlumno insertado a la lista correctamente";
-                break;
-            case 2:
+           
+            do {
+                menuListas();
+                cout << endl;
+                cin >> opcionLists;
+                switch (opcionLists) {
+                case 1:
+                    do {
+                        cout << "--- Insertar Alumno a la Lista ---\nIngrese el nombre completo del Alumno: ";
+                        cin.clear();
+                        cin.ignore();
+                        getline(cin, nombreA);
+                        cout << "\nIngrese el numero de cuenta del alumno: ";
+                        getline(cin, numeroC);
+                        cout << endl;
+                        a = new Alumno(nombreA, numeroC);
+                        cout << "\nIngrese el indice al que desea insertar el alumno: ";
+                        cin >> indiceInsert;
+                        cout << endl;
+                        lista->inserta(a, indiceInsert);
+                        cout << "\nAlumno insertado a la lista correctamente\n";
+                        cout << "\nDesea agregar otro alumno a la lista? (1.si 0. no): ";
+                        cin >> addLoop;
+                        cout << endl;
 
-                break;
-            case 3:
 
-                break;
-            case 4:
-            
-                break;
-            case 5:
+                    } while (addLoop != 0);
+                    break;
+                case 2:
+                    cout << "\n--- Impresion de Lista --- \n";
+                    if (!lista->vacia())
+                        lista->imprimeLista();
+                    else
+                        cout << "La lista esta vacia.";
+                    break;
+                case 3:
+                    cout << "\n--- Busqueda en la Lista ---\n";
+                    cout << "Ingrese el numero de cuenta del estudiante: ";
+                    cin >> numeroC;
+                    localizaNum = lista->localiza(new Alumno("", numeroC));
+                    if (localizaNum != 0)
+                        cout << endl << "\nNombre del estudiante: " << dynamic_cast<Alumno*>(lista->recupera(lista->localiza(new Alumno("", numeroC))))->getNombre() << " Indice: " << lista->localiza(new Alumno("", numeroC)) << endl;
+                    else
+                        cout << "No existe alumno con tal numero\n\n";
+                    break;
+                case 4:
+                    cout << "\n--- Eliminacion en la Lista ---\n" << "Ingrese la posicion del alumno en la lista el cual desea eliminar: ";
+                    cin >> indiceDelete;
+                    if (lista->getSize() > 0 && indiceDelete <= lista->getSize()) {
+                        lista->suprime(indiceDelete);
+                        cout << "Alumno eliminado correctamente";
+                    }
+                    else if (lista->vacia()) {
+                        cout << "No se pudo eliminar el alumno: LISTA VACIA";
+                    }
+                    else {
+                        do {
+                            cout << "No se pudo elimiar el alumno: INDICE INCORRECTO";
+                            cin >> indiceDelete;
 
-                break;
-            case 6:
+                        } while (indiceDelete > lista->getSize() || indiceDelete < 0);
+                    }
+                    break;
+                case 5:
+                    cout << "\n--- Ver si esta vacia la lista ---";
+                    if (!lista->vacia()){
+                        cout << "\nLa lista no esta vacia, contiene " << lista->getSize() << " alumnos\n";
+                    }
+                    else {
+                        cout << "\nLa lista esta vacia.\n";
+                    }
+                    break;
+                case 6:
+                    cout << "\n--- Obtener alumno ingresando indice ---\n";
+                    cout << "Ingrese el indice que desea obtener: ";
+                    cin >> indicePORINDEX;
+                    if (indicePORINDEX > 0 && indicePORINDEX < lista->getSize())
+                        cout << "Nombre del Alumno: " << dynamic_cast<Alumno*>(lista->recupera(indicePORINDEX))->getNombre() << " Numero de Cuenta: " << dynamic_cast<Alumno*>(lista->recupera(indicePORINDEX))->getNumeroCuenta() << endl;
+                    else
+                        cout << "Indice invalido";
 
-                break;
-            case 7:
+                    break;
+                case 7:
+                    cout << "\n--- Obtener siguiente de un indice ---\n";
+                    cout << "Ingrese el indice que desea obtener: ";
+                    cin >> indicePORINDEX;
+                    if (indicePORINDEX > 0 && indicePORINDEX <= lista->getSize()-1)
+                        cout << "Nombre del Alumno: " << dynamic_cast<Alumno*>(lista->siguiente(indicePORINDEX))->getNombre() << " Numero de Cuenta: " << dynamic_cast<Alumno*>(lista->siguiente(indicePORINDEX))->getNumeroCuenta() << endl;
+                    else
+                        cout << "Indice invalido";
+                    break;
+                case 8:
+                    cout << "\n--- Obtener anterior de un indice ---\n";
+                    cout << "Ingrese el indice que desea obtener: ";
+                    cin >> indicePORINDEX;
+                    if (indicePORINDEX > 1 && indicePORINDEX <= lista->getSize())
+                        cout << "Nombre del Alumno: " << dynamic_cast<Alumno*>(lista->anterior(indicePORINDEX))->getNombre() << " Numero de Cuenta: " << dynamic_cast<Alumno*>(lista->anterior(indicePORINDEX))->getNumeroCuenta() << endl;
+                    else
+                        cout << "Indice invalido";
+                    break;
+                case 9:
+                    cout << "\n--- Nulificacion de toda la lista ---\n";
+                    if (!lista->vacia()){
+                        lista->anula();
+                        cout << "Lista anulada correctamente\n";
+                    }
+                    else {
+                        cout << "La lista esta vacia, no hay nada que anular";
+                    }
+                    break;
+                case 10:
 
-                break;
-            case 8:
-
-                break;
-            case 9:
-
-                break;
-            case 10:
-
-                break;
-            default:
-                break;
-            }
-
+                    break;
+                default:
+                    break;
+                }
+            } while (opcionLists != 10);
 
             break;
         
-        default:
-            cout << "Opcion Invalida, vuelva a intentarlo";
+        
         }    
     }while(opcionMM != 4);
     
