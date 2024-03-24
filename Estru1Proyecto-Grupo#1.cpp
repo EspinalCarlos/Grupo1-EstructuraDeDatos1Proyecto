@@ -54,13 +54,23 @@ void menuColas() {
                 break;
             case 2:
                 temp = cola->dequeue();
-                a = dynamic_cast<Alumno*>(temp);
-                cout << "El ultimo elemento en la cola es: " + a->toString() << endl;
+                if (temp == nullptr) {
+                    cout << "La cola esta vacia" << endl;
+                }
+                else {
+                    a = dynamic_cast<Alumno*>(temp);
+                    cout << "El primer elemento en la cola es: " + a->toString() + " y se ha quitado de la cola" << endl;
+                } 
                 break;
             case 3:
                 temp = cola->peek();
-                a = dynamic_cast<Alumno*>(temp);
-                cout << "El primer elemento en la cola es: " + a->toString() << endl;
+                if (temp == nullptr) {
+                    cout << "La cola esta vacia" << endl;
+                }
+                else {
+                    a = dynamic_cast<Alumno*>(temp);
+                    cout << "El primer elemento en la cola es: " + a->toString() << endl;
+                }              
                 break;
             case 4:
                 if (cola->isEmpty()) {

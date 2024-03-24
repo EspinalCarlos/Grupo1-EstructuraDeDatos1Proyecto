@@ -31,16 +31,17 @@ Object* ArrayQueue::dequeue() {
 	if (index_last == 0) {
 		return nullptr;
 	}
-	Object* element = queueList[index_last];
+	index_last--;
+	Object* element = queueList[0];
 	for (int i = 0; i < index_last; i++) {
 		queueList[i] = queueList[i + 1];
 	}
-	index_last--;
+	queueList[index_last + 1] = nullptr;
 	return element;
 }
 
 Object* ArrayQueue::peek() {
-	if (&queueList[0] == nullptr) {
+	if (index_last == 0) {
 		return nullptr;
 	}
 	return queueList[0];
@@ -70,4 +71,5 @@ void ArrayQueue::printQueue() {
 	else {
 		cout << "La cola esta vacia" << endl;
 	}
+	cout << "\n" << endl;
 }
