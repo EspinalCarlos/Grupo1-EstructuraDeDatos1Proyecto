@@ -8,5 +8,9 @@ protected:
 public:
 	Nodo();
 	~Nodo();
+	void setSiguiente(Nodo*);
+	void setAnterior(Nodo*);
+	Nodo* getAnterior();
+	Nodo* getSiguiente();
 };
 
