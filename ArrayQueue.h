@@ -1,5 +1,6 @@
 #pragma once
 #include "TDACola.h"
+#include "Object.h"
 #include <string>
 class ArrayQueue : public TDACola
 {

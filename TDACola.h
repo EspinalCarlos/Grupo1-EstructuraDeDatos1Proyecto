@@ -1,11 +1,11 @@
 #pragma once
 #include "Object.h"
 #include <string>
-class TDACola : public Object {
+class TDACola {
 protected:
-	int max_size;
+	int max_size = 10;
 public:
-	virtual bool queue() = 0;
+	virtual void queue(Object*) = 0;
 	virtual Object* dequeue() = 0;
 	virtual Object* peek() = 0;
 	virtual bool isEmpty() = 0;

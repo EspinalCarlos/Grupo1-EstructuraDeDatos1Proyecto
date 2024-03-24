@@ -7,7 +7,8 @@ using namespace std;
 #include "ArrayList.h"
 #include "Alumno.h"
 #include <string>
-
+#include "TDACola.h"
+#include "ArrayQueue.h"
 
 
 void menuPrincipal(){
@@ -17,10 +18,80 @@ void menuListas(){
     cout << "---- Operaciones con Listas ----\n\n1. Insertar Elemento\n2.Imprimir Elementos\n3.Buscar Elemento\n4. Borrar Elemento\n5. Ver si esta vacia\n6. Obtener elemento por posicion\n7. Obtener Siguiente\n8. Obtener Anterior\n9. Borrar todos los elementos de la lista\n10. Regresar al menu anterior ";
 }
 
+void menuColas() {
+    int opQ;
+    TDACola* cola = nullptr;
+    cout << "Menu Tipo de Cola\n\n1. Trabajar con ArrayQueue\n2. Trabajar con LinkedQueue\n3. Regresar al Menu Principal" << endl;
+    cin >> opQ;
+    switch (opQ) {
+    case 1:
+        cola = new ArrayQueue();
+        break;
+    case 2:
+        //cola = new LinkedQueue();
+        break;
+    default:
+        cout << "OPCION INGRESADA NO VALIDA: INGRESE UN NUMERO VALIDO" << endl;
+        break;
+    }
+    if (opQ == 1 || opQ == 2) {
+        int opSubMenuQ;
+        string nombre;
+        string numC;
+        Alumno* a;
+        Object* temp;
+        do {
+            cout << "Operaciones de Colas\n\n1. Encolar\n2. Desencolar\n3. Ver Frente\n4. Verificar si esta vacia\n5. Imprimir Elementos\n6. Borrar los elementos\n7. Regresar al Menu Anterior" << endl;
+            cin >> opSubMenuQ;
+            switch (opSubMenuQ) {
+            case 1:
+                cout << "Ingrese el nombre completo del alumno: " << endl;
+                cin >> nombre;
+                cout << "Ingrese el numero de cuenta del alumno: " << endl;
+                cin >> numC;
+                a = new Alumno(nombre, numC);
+                cola->queue(a);
+                break;
+            case 2:
+                temp = cola->dequeue();
+                a = dynamic_cast<Alumno*>(temp);
+                cout << "El ultimo elemento en la cola es: " + a->toString() << endl;
+                break;
+            case 3:
+                temp = cola->peek();
+                a = dynamic_cast<Alumno*>(temp);
+                cout << "El primer elemento en la cola es: " + a->toString() << endl;
+                break;
+            case 4:
+                if (cola->isEmpty()) {
+                    cout << "La cola esta vacia" << endl;
+                }
+                else {
+                    cout << "La cola no esta vacia" << endl;
+                }
+                break;
+            case 5:
+                cola->printQueue();
+                break;
+            case 6:
+                cola->clear();
+                break;
+            case 7:
+                cout << "Regresando al menu ... \n\n" << endl;
+                break;
+            default:
+                cout << "OPCION INGRESADA NO VALIDA: INGRESE UN NUMERO VALIDO" << endl;
+                break;
+            }
+        } while (opSubMenuQ != 7);
+        delete a;
+        delete temp;
+    }
+}
+
 int main(int argc, const char* argv[]){
     int opcionMM,opcionLists,opcionListsP,addLoop, indiceInsert, localizaNum, indiceDelete, indicePORINDEX;
     TDALista* lista = NULL;
-    
     do{
         string nombreA;
         string numeroC;
@@ -97,7 +168,7 @@ int main(int argc, const char* argv[]){
                     }
                     else {
                         do {
-                            cout << "No se pudo elimiar el alumno: INDICE INCORRECTO";
+                            cout << "No se pudo eliminar el alumno: INDICE INCORRECTO";
                             cin >> indiceDelete;
 
                         } while (indiceDelete > lista->getSize() || indiceDelete < 0);
@@ -159,8 +230,11 @@ int main(int argc, const char* argv[]){
             } while (opcionLists != 10);
 
             break;
-        
-        
+        case 2:
+            //pilas
+            break;
+        case 3:
+            menuColas();
         }    
     }while(opcionMM != 4);
     
