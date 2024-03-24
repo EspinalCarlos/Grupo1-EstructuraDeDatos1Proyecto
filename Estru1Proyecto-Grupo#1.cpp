@@ -38,8 +38,8 @@ void menuColas() {
         int opSubMenuQ;
         string nombre;
         string numC;
-        Alumno* a;
-        Object* temp;
+        Alumno* a = nullptr;
+        Object* temp = nullptr;
         do {
             cout << "Operaciones de Colas\n\n1. Encolar\n2. Desencolar\n3. Ver Frente\n4. Verificar si esta vacia\n5. Imprimir Elementos\n6. Borrar los elementos\n7. Regresar al Menu Anterior" << endl;
             cin >> opSubMenuQ;
