@@ -4,14 +4,14 @@
 #include "Nodo.h"
 using namespace std;
 
-LinkedQueue::LinkedQueue() {
+LinkedQueue::LinkedQueue() { //EL constructor que inicializa el LinkedQueue
 }
 
-LinkedQueue::~LinkedQueue() {
+LinkedQueue::~LinkedQueue() {//El destructor
     clear();
 }
 
-void LinkedQueue::queue(Object* dato) {
+void LinkedQueue::queue(Object* dato) {//Este metodo inserta un objeto al final del LinkedQueue
     Nodo* ptr = new Nodo();
     ptr->setDato(dato);
     if (!isEmpty()) {
@@ -24,14 +24,14 @@ void LinkedQueue::queue(Object* dato) {
     }
 }
 
-Object* LinkedQueue::dequeue() {
+Object* LinkedQueue::dequeue() { //retorna el primero objeto del queue, y lo saca
     if (isEmpty()) {
         return nullptr;
     }
     else {
         Nodo* ptr = frente;
         Object* dato = ptr->getDato();
-        if (frente == atras) {
+        if (frente == atras) { //verifica si solo hay un objeto
             atras = nullptr;
             frente = nullptr;
         }
@@ -44,7 +44,7 @@ Object* LinkedQueue::dequeue() {
     }
 }
 
-Object* LinkedQueue::peek() {
+Object* LinkedQueue::peek() { //Imprime el primer objeto del queue
     if (isEmpty()) {
         return nullptr;
     }
@@ -53,7 +53,7 @@ Object* LinkedQueue::peek() {
     }
 }
 
-bool LinkedQueue::isEmpty() {
+bool LinkedQueue::isEmpty() { //Verifica si el queue esta vacio o no
     if (frente == nullptr && atras == nullptr) {
         return true;
     }
@@ -62,13 +62,13 @@ bool LinkedQueue::isEmpty() {
     }
 }
 
-void LinkedQueue::clear() {
-    while (!isEmpty()) {
+void LinkedQueue::clear() { //borra todos los datos del queue
+    while (!isEmpty()) { //Recorre el queue, borrando cada rato
         dequeue();
     }
 }
 
-void LinkedQueue::printQueue() {
+void LinkedQueue::printQueue() {//Imprime todos los datos en el queue
     if (isEmpty()) {
         cout << "La cola está vacía" << std::endl;
     }
