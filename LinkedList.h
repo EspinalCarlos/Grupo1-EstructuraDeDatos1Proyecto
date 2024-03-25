@@ -18,6 +18,6 @@ public:
 	virtual void imprimeLista()override;
 	virtual int localiza(Object*)override;
 	virtual bool vacia()override;
-	virtual void append(Object*)override;  
+	
 };
 

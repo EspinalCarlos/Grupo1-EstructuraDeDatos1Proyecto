@@ -142,7 +142,16 @@ int main(int argc, const char* argv[]){
                         cout << "\nIngrese el indice al que desea insertar el alumno: ";
                         cin >> indiceInsert;
                         cout << endl;
-                        lista->inserta(a, indiceInsert);
+                        if (indiceInsert <= lista->getSize()+1 && indiceInsert > 0) {
+                            lista->inserta(a, indiceInsert);
+                        }
+                        else {
+                            while (indiceInsert > lista->getSize()+1 || indiceInsert <= 0) {
+                                cout << "Indice invalido porfavor ingrese un indice valido: ";
+                                cin >> indiceInsert;
+                            }
+                            lista->inserta(a, indiceInsert);
+                        }
                         cout << "\nAlumno insertado a la lista correctamente\n";
                         cout << "\nDesea agregar otro alumno a la lista? (1.si 0. no): ";
                         cin >> addLoop;
@@ -184,6 +193,7 @@ int main(int argc, const char* argv[]){
                             cin >> indiceDelete;
 
                         } while (indiceDelete > lista->getSize() || indiceDelete < 0);
+                        lista->suprime(indiceDelete); 
                     }
                     break;
                 case 5:

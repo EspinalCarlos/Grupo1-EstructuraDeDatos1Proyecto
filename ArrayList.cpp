@@ -68,27 +68,7 @@ bool ArrayList::inserta(Object* data, int position) {
 	}
 }
 
-void ArrayList::append(Object* data) {
-	if (size < capacidad){
-		this->arr[size - 1] = data; \
-		size++;
-	}
-	else if (size >= capacidad) {
-		Object** temp = new Object* [capacidad + 1];
-		for (size_t i = 0; i < capacidad+1; i++){
-			if (i != (capacidad + 1) - 1) {
-				this->arr[i] = temp[i];
-			}
-			else if(i == (capacidad+1)-1){
-				this->arr[i] = data;
-			}
-		}
-		capacidad++;
-		size++;
-		anula();
-		this->arr = temp;
-	}
-}
+
 void ArrayList::imprimeLista() {
 	for (int i = 0; i < size; i++){
 		if (i != size)
