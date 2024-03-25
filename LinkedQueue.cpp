@@ -1,6 +1,7 @@
 #include "LinkedQueue.h"
 #include <string>
 #include <iostream>
+#include "Nodo.h"
 using namespace std;
 
 LinkedQueue::LinkedQueue() {
