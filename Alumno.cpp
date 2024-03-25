@@ -19,7 +19,8 @@ string Alumno::getNumeroCuenta() {
 }
 
 string Alumno::toString() {
-    return nombreAlumno;
+    string a = nombreAlumno + " " + numeroCuenta;
+    return a;
 }
 bool Alumno::equals(Object* obj) {
     Alumno* a2 = dynamic_cast<Alumno*>(obj);

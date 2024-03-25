@@ -9,6 +9,7 @@ using namespace std;
 #include <string>
 #include "TDACola.h"
 #include "ArrayQueue.h"
+#include "LinkedList.h"
 
 
 void menuPrincipal(){
@@ -117,7 +118,7 @@ int main(int argc, const char* argv[]){
                     lista = new ArrayList();
                     break;
                 case 2:
-                    
+                    lista = new LinkedList();
                     break;
            } 
             

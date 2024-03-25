@@ -2,6 +2,8 @@
 using namespace std;
 
 Nodo::Nodo(){
+	this->anterior = nullptr;
+	this->siguiente = nullptr;
 }
 
 Nodo::~Nodo() {

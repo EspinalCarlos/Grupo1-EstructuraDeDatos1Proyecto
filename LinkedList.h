@@ -9,15 +9,15 @@ protected:
 public:
 	LinkedList();
 	~LinkedList();
-	virtual bool inserta(Object* data, int position);
-	virtual bool suprime(int);
+	virtual bool inserta(Object* data, int position) override;
+	virtual bool suprime(int)override;
 	virtual void anula();
-	virtual Object* recupera(int);
-	virtual Object* anterior(int);
-	virtual Object* siguiente(int);
-	virtual void imprimeLista();
-	virtual int localiza(Object*);
-	virtual bool vacia();
-	virtual void append(Object*);
+	virtual Object* recupera(int)override;
+	virtual Object* anterior(int)override;
+	virtual Object* siguiente(int)override;
+	virtual void imprimeLista()override;
+	virtual int localiza(Object*)override;
+	virtual bool vacia()override;
+	virtual void append(Object*)override;  
 };
 
