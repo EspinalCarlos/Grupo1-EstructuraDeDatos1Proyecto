@@ -195,7 +195,9 @@ void menuColas() {
             switch (opSubMenuQ) {
             case 1:
                 cout << purple << "Ingrese el nombre completo del alumno: " << endl;
-                cin >> nombre;
+                cin.clear();
+                cin.ignore();
+                getline(cin,nombre);
                 cout << purple << "Ingrese el numero de cuenta del alumno: " << endl;
                 cin >> numC;
                 a = new Alumno(nombre, numC);
