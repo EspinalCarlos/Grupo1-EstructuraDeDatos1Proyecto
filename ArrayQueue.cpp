@@ -3,16 +3,16 @@
 #include <iostream>
 using namespace std;
 
-ArrayQueue::ArrayQueue() {
+ArrayQueue::ArrayQueue() { //inicializacion del ArrayQueue con su constructor
 	queueList = new Object * [max_size];
 	index_last = 0;
 }
 
-ArrayQueue::~ArrayQueue() {
+ArrayQueue::~ArrayQueue() { //destructor del ArrayQueue
 	delete[] queueList;
 }
-
-void ArrayQueue::queue(Object* element) {
+//encola, que agrega un elemento a la cola y extiende el tam del arreglo si se llena antes de meter el objeto ingresado
+void ArrayQueue::queue(Object* element) { 
 	if (index_last == max_size) {
 		int prev_size = max_size;	//guarda el tam viejo del arreglo antes de expandirlo
 		max_size = max_size * 2;
@@ -27,6 +27,7 @@ void ArrayQueue::queue(Object* element) {
 	index_last++;
 }
 
+//desencolar, que retorna un puntero nulo si el arreglo esta vacio, de lo contrario desencola y luego corre los objetos en la cola
 Object* ArrayQueue::dequeue() {
 	if (index_last == 0) {
 		return nullptr;
@@ -41,14 +42,14 @@ Object* ArrayQueue::dequeue() {
 		return element;
 	}
 }
-
+//ver frente, que retorna un puntero nulo si el arreglo esta vacio, de lo contrario retorna el primer objeto en la cola
 Object* ArrayQueue::peek() {
 	if (index_last == 0) {
 		return nullptr;
 	}
 	return queueList[0];
 }
-
+//isEmpty, que retorna true o false dependiendo de si hay un objeto no nulo en el arreglo
 bool ArrayQueue::isEmpty() {
 	for (int i = 0; i < index_last; i++) {
 		if (&queueList[0] != nullptr) {
@@ -57,20 +58,24 @@ bool ArrayQueue::isEmpty() {
 	}
 	return true;
 }
-
+//limpiar, que elimina la cola y la vuelve a inicializar
 void ArrayQueue::clear() {
 	index_last = 0;
 	delete[] queueList;
 	queueList = new Object * [max_size];
 }
-
+//imprimir, que solo recorre la cola e imprime los toString correspondientes
 void ArrayQueue::printQueue() {
 	if (index_last > 0) {
 		for (int i = 0; i < index_last; i++) {
-			cout << queueList[i]->toString() << ", ";
+			cout << queueList[i]->toString();
+			if (i != index_last - 1) {
+				cout << ", ";
+			}
 		}
 	}
 	else {
 		cout << "La cola esta vacia" << endl;
 	}
+	cout << endl;
 }
