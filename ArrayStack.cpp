@@ -34,6 +34,7 @@ void ArrayStack::pop() {
         cout << endl;
     }
     else {
+        cout << "\nCaracter: " << stackArray[top] << "\n\n";
         top--;
     }
 }

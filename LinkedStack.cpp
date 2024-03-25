@@ -28,6 +28,7 @@ void LinkedStack::pop() {
     }
     else {
         NodoLStack* temp = top;
+        cout <<"\nCaracter: " << temp->data << "\n\n";
         top = top->next;
         delete temp;
     }

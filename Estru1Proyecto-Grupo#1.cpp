@@ -50,9 +50,20 @@ void menuPilas() {
                 switch (seleccion1) {
                 case 1: {
                     cout << purple << "Ingrese un caracter: ";
-                    char linea;
-                    cin >> linea;
-                    char* c = &linea;
+                    string linea; 
+                    cin.clear(); 
+                    cin.ignore(); 
+                    getline(cin, linea); 
+                    if (sizeof(linea) > 1) {
+                        while (linea.size() > 1) {
+                            cout << sizeof(linea);
+                            cout << red << "\nInput incorrecto, debe ser un caracter: ";
+                            cin.clear();
+                            cin.ignore();
+                            getline(cin, linea);
+                        }
+                    }
+                    char* c = &linea[0];
                     pila->push(c);
                     break;
                 }
@@ -107,9 +118,19 @@ void menuPilas() {
                 switch (seleccion2) {
                 case 1: {
                     cout << purple << "Ingrese un caracter: ";
-                    char linea;
-                    cin >> linea;
-                    char* c = &linea;
+                    string linea;
+                    cin.clear();
+                    cin.ignore();
+                    getline(cin, linea);
+                    if (sizeof(linea) > 1){
+                        while (linea.size() > 1) {
+                            cout << red << "\nInput incorrecto, debe ser un caracter: ";
+                            cin.clear(); 
+                            cin.ignore(); 
+                            getline(cin, linea);
+                        }
+                    }
+                    char* c = &linea[0];
                     pila->push(c);
                     break;
                 }
