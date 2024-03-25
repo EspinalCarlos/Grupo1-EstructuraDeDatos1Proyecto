@@ -37,15 +37,18 @@ bool ArrayList::suprime(int position){
 }
 
 bool ArrayList::inserta(Object* data, int position) {
-	if (position >= 0 || position < capacidad && size != capacidad){
-		for (int i = size; i > position; i--){
-			this->arr[i + 1] = this->arr[i];
+	if (position >= 0 && position < capacidad && size != capacidad){
+		for (int i = size+1; i >= position-1; i--){
+			
+				this->arr[i] = this->arr[i-1];
+				
+			
 		}
-		this->arr[position - 1] = data;
+		this->arr[position-1] = data;
 		this->size++;
 		return true;
 	}
-	else if (position >= 0 || position < capacidad && size == capacidad) {
+	else if (position >= 0 && position < capacidad && size == capacidad) {
 		Object** temp = new Object*[capacidad+1];
 		for (size_t i = 0; i < capacidad+1; i++){
 			if (i != position-1 && i < position-1){
