@@ -204,9 +204,9 @@ void menuColas() {
                 else {
                     a = dynamic_cast<Alumno*>(temp);
                     cout << "El primer elemento en la cola es: " + a->toString() + " y se ha quitado de la cola" << endl;
-                } 
-                delete a;
-                delete temp;
+                    delete a;
+                    delete temp;
+                }                 
                 break;
             case 3:
                 temp = cola->peek();
@@ -216,9 +216,9 @@ void menuColas() {
                 else {
                     a = dynamic_cast<Alumno*>(temp);
                     cout << "El primer elemento en la cola es: " + a->toString() << endl;
+                    delete a;
+                    delete temp;
                 }      
-                delete a;
-                delete temp;
                 break;
             case 4:
                 if (cola->isEmpty()) {
