@@ -285,7 +285,7 @@ int main(int argc, const char* argv[]){
                 switch (opcionLists) {
                 case 1:
                     do {
-                        cout << purple << "--- Insertar Alumno a la Lista ---\nIngrese el nombre completo del Alumno: ";
+                        cout << purple << "\n--- Insertar Alumno a la Lista ---\nIngrese el nombre completo del Alumno: ";
                         cin.clear();
                         cin.ignore();
                         getline(cin, nombreA);
@@ -321,7 +321,7 @@ int main(int argc, const char* argv[]){
                         cout << endl;
                     }
                     else {
-                        cout << red << "La lista esta vacia.";
+                        cout << red << "\nLa lista esta vacia.\n";
                     }
                     cout << endl;
                     break;
@@ -343,13 +343,13 @@ int main(int argc, const char* argv[]){
                         cout << green << "Alumno eliminado correctamente";
                     }
                     else if (lista->vacia()) {
-                        cout << red << "No se pudo eliminar el alumno: LISTA VACIA";
+                        cout << red << "\nNo se pudo eliminar el alumno: LISTA VACIA\n";
                     }
                     else {
                         do {
                             cout << red << "No se pudo eliminar el alumno: INDICE INCORRECTO";
                             cin >> indiceDelete;
-
+                            cout << endl;
                         } while (indiceDelete > lista->getSize() || indiceDelete < 0);
                         lista->suprime(indiceDelete); 
                     }
@@ -370,7 +370,7 @@ int main(int argc, const char* argv[]){
                     if (indicePORINDEX > 0 && indicePORINDEX < lista->getSize())
                         cout << purple << "Nombre del Alumno: " << dynamic_cast<Alumno*>(lista->recupera(indicePORINDEX))->getNombre() << " Numero de Cuenta: " << dynamic_cast<Alumno*>(lista->recupera(indicePORINDEX))->getNumeroCuenta() << endl;
                     else
-                        cout << red << "Indice invalido";
+                        cout << red << "\nIndice invalido\n";
 
                     break;
                 case 7:
@@ -381,7 +381,7 @@ int main(int argc, const char* argv[]){
                     if (indicePORINDEX > 0 && indicePORINDEX <= lista->getSize()-1)
                         cout << purple << "Nombre del Alumno: " << dynamic_cast<Alumno*>(lista->siguiente(indicePORINDEX))->getNombre() << " Numero de Cuenta: " << dynamic_cast<Alumno*>(lista->siguiente(indicePORINDEX))->getNumeroCuenta() << endl;
                     else
-                        cout << red << "Indice invalido";
+                        cout << red << "\nIndice invalido\n";
                     break;
                 case 8:
                     cout << purple << "\n--- Obtener anterior de un indice ---\n";
@@ -390,7 +390,7 @@ int main(int argc, const char* argv[]){
                     if (indicePORINDEX > 1 && indicePORINDEX <= lista->getSize())
                         cout << purple << "Nombre del Alumno: " << dynamic_cast<Alumno*>(lista->anterior(indicePORINDEX))->getNombre() << " Numero de Cuenta: " << dynamic_cast<Alumno*>(lista->anterior(indicePORINDEX))->getNumeroCuenta() << endl;
                     else
-                        cout << red << "Indice invalido";
+                        cout << red << "\nIndice invalido\n";
                     break;
                 case 9:
                     cout << purple << "\n--- Nulificacion de toda la lista ---\n";
