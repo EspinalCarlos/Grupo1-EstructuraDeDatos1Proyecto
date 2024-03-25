@@ -194,6 +194,7 @@ void menuColas() {
                 cin >> numC;
                 a = new Alumno(nombre, numC);
                 cola->queue(a);
+                delete a;
                 break;
             case 2:
                 temp = cola->dequeue();
@@ -204,6 +205,8 @@ void menuColas() {
                     a = dynamic_cast<Alumno*>(temp);
                     cout << "El primer elemento en la cola es: " + a->toString() + " y se ha quitado de la cola" << endl;
                 } 
+                delete a;
+                delete temp;
                 break;
             case 3:
                 temp = cola->peek();
@@ -213,7 +216,9 @@ void menuColas() {
                 else {
                     a = dynamic_cast<Alumno*>(temp);
                     cout << "El primer elemento en la cola es: " + a->toString() << endl;
-                }              
+                }      
+                delete a;
+                delete temp;
                 break;
             case 4:
                 if (cola->isEmpty()) {
@@ -231,14 +236,13 @@ void menuColas() {
                 break;
             case 7:
                 cout << "Regresando al menu ... \n\n" << endl;
+                delete cola;
                 break;
             default:
                 cout << "OPCION INGRESADA NO VALIDA: INGRESE UN NUMERO VALIDO" << endl;
                 break;
             }
         } while (opSubMenuQ != 7);
-        delete a;
-        delete temp;
     }
 }
 
@@ -386,7 +390,7 @@ int main(int argc, const char* argv[]){
                     }
                     break;
                 case 10:
-
+                    delete lista;
                     break;
                 default:
                     break;
@@ -401,7 +405,6 @@ int main(int argc, const char* argv[]){
             menuColas();
         }    
     }while(opcionMM != 4);
-    
 }
 
 
