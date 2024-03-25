@@ -254,7 +254,7 @@ void menuColas() {
         }
     }
 }
-
+//
 int main(int argc, const char* argv[]){
     int opcionMM,opcionLists,opcionListsP,addLoop, indiceInsert, localizaNum, indiceDelete, indicePORINDEX;
     TDALista* lista = NULL;
