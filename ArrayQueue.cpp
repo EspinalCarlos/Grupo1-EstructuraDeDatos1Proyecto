@@ -9,7 +9,7 @@ ArrayQueue::ArrayQueue() {
 }
 
 ArrayQueue::~ArrayQueue() {
-	//delete[] queueList;
+	delete[] queueList;
 }
 
 void ArrayQueue::queue(Object* element) {
@@ -31,16 +31,19 @@ Object* ArrayQueue::dequeue() {
 	if (index_last == 0) {
 		return nullptr;
 	}
-	Object* element = queueList[index_last];
-	for (int i = 0; i < index_last; i++) {
-		queueList[i] = queueList[i + 1];
+	else {
+		Object* element = queueList[0];
+		queueList[0] == nullptr;
+		for (int i = 0; i < index_last; i++) {
+			queueList[i] = queueList[i + 1];
+		}
+		index_last--;
+		return element;
 	}
-	index_last--;
-	return element;
 }
 
 Object* ArrayQueue::peek() {
-	if (&queueList[0] == nullptr) {
+	if (index_last == 0) {
 		return nullptr;
 	}
 	return queueList[0];

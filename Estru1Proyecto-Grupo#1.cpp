@@ -173,6 +173,8 @@ void menuColas() {
     case 2:
         cola = new LinkedQueue();
         break;
+    case 3:
+        break;
     default:
         cout << "OPCION INGRESADA NO VALIDA: INGRESE UN NUMERO VALIDO" << endl;
         break;
@@ -194,18 +196,15 @@ void menuColas() {
                 cin >> numC;
                 a = new Alumno(nombre, numC);
                 cola->queue(a);
-                delete a;
                 break;
             case 2:
                 temp = cola->dequeue();
                 if (temp == nullptr) {
                     cout << "La cola esta vacia" << endl;
                 }
-                else {//?
+                else {
                     a = dynamic_cast<Alumno*>(temp);
                     cout << "El primer elemento en la cola es: " + a->toString() + " y se ha quitado de la cola" << endl;
-                    delete a;
-                    delete temp;
                 }                 
                 break;
             case 3:
@@ -216,8 +215,6 @@ void menuColas() {
                 else {
                     a = dynamic_cast<Alumno*>(temp);
                     cout << "El primer elemento en la cola es: " + a->toString() << endl;
-                    delete a;
-                    delete temp;
                 }      
                 break;
             case 4:
@@ -236,13 +233,21 @@ void menuColas() {
                 break;
             case 7:
                 cout << "Regresando al menu ... \n\n" << endl;
-                delete cola;
                 break;
             default:
                 cout << "OPCION INGRESADA NO VALIDA: INGRESE UN NUMERO VALIDO" << endl;
                 break;
             }
         } while (opSubMenuQ != 7);
+        if (a != nullptr) {
+            delete a;
+        }
+        if (cola != nullptr) {
+            delete cola;
+        }
+        if (temp != nullptr) {
+            delete temp;
+        }
     }
 }
 
