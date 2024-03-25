@@ -364,7 +364,7 @@ int main(int argc, const char* argv[]){
                     cin >> indiceDelete;
                     if (lista->getSize() > 0 && indiceDelete <= lista->getSize()) {
                         lista->suprime(indiceDelete);
-                        cout << green << "Alumno eliminado correctamente";
+                        cout << green << "Alumno eliminado correctamente\n";
                     }
                     else if (lista->vacia()) {
                         cout << red << "\nNo se pudo eliminar el alumno: LISTA VACIA\n";
@@ -391,7 +391,7 @@ int main(int argc, const char* argv[]){
                     cout << purple << "\n--- Obtener alumno ingresando indice ---\n";
                     cout << purple << "Ingrese el indice que desea obtener: ";
                     cin >> indicePORINDEX;
-                    if (indicePORINDEX > 0 && indicePORINDEX < lista->getSize())
+                    if (indicePORINDEX > 0 && indicePORINDEX <= lista->getSize())
                         cout << purple << "Nombre del Alumno: " << dynamic_cast<Alumno*>(lista->recupera(indicePORINDEX))->getNombre() << " Numero de Cuenta: " << dynamic_cast<Alumno*>(lista->recupera(indicePORINDEX))->getNumeroCuenta() << endl;
                     else
                         cout << red << "\nIndice invalido\n";
