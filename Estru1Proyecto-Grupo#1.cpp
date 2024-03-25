@@ -86,6 +86,7 @@ void menuPilas() {
 
                 case 6:
                     pila->vaciar();
+                    cout << green << "\nSe ha vaciado la pila correctamente\n";
                     break;
 
                 case 7:
@@ -153,6 +154,7 @@ void menuPilas() {
 
                 case 6:
                     pila->vaciar();
+                    cout << green << "\nSe ha vaciado la pila correctamente\n";
                     break;
 
                 case 7:
@@ -257,6 +259,7 @@ void menuColas() {
                 break;
             case 6:
                 cola->clear();
+                cout << green << "Se ha vaciado la cola\n";
                 break;
             case 7:
                 cout << white << "Regresando al menu ... \n\n" << endl;
