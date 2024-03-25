@@ -296,11 +296,11 @@ int main(int argc, const char* argv[]){
                         cout << purple << "\nIngrese el indice al que desea insertar el alumno: ";
                         cin >> indiceInsert;
                         cout << endl;
-                        if (indiceInsert <= lista->getSize()+1 && indiceInsert > 0) {
+                        if (indiceInsert <= lista->getSize() + 1 && indiceInsert > 0) {
                             lista->inserta(a, indiceInsert);
                         }
                         else {
-                            while (indiceInsert > lista->getSize()+1 || indiceInsert <= 0) {
+                            while (indiceInsert > lista->getSize() + 1 || indiceInsert <= 0) {
                                 cout << red << "Indice invalido porfavor ingrese un indice valido: ";
                                 cin >> indiceInsert;
                             }
@@ -316,10 +316,14 @@ int main(int argc, const char* argv[]){
                     break;
                 case 2:
                     cout << purple << "\n--- Impresion de Lista --- \n";
-                    if (!lista->vacia())
+                    if (!lista->vacia()) {
                         lista->imprimeLista();
-                    else
+                        cout << endl;
+                    }
+                    else {
                         cout << red << "La lista esta vacia.";
+                    }
+                    cout << endl;
                     break;
                 case 3:
                     cout << purple << "\n--- Busqueda en la Lista ---\n";

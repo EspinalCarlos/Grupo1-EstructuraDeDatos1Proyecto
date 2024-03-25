@@ -1,15 +1,15 @@
 #pragma once
 #include "TDACola.h"
 #include "Object.h"
-#include "Nodo.h"
+#include "NodoLStack.h"
 #include <string>
 
 
 class LinkedQueue
 	: public TDACola {
 private:
-	Nodo* frente;
-	Nodo* atras;
+	NodoLStack* frente;
+	NodoLStack* atras;
 	Object** queueList;
 public:
 	LinkedQueue();
