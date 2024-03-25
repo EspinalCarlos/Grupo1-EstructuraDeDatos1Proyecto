@@ -201,7 +201,7 @@ void menuColas() {
                 if (temp == nullptr) {
                     cout << "La cola esta vacia" << endl;
                 }
-                else {
+                else {//?
                     a = dynamic_cast<Alumno*>(temp);
                     cout << "El primer elemento en la cola es: " + a->toString() + " y se ha quitado de la cola" << endl;
                     delete a;
