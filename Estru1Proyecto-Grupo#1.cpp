@@ -10,6 +10,7 @@ using namespace std;
 #include "TDACola.h"
 #include "ArrayQueue.h"
 #include "LinkedList.h"
+#include "LinkedQueue.h"
 
 
 void menuPrincipal(){
@@ -29,7 +30,7 @@ void menuColas() {
         cola = new ArrayQueue();
         break;
     case 2:
-        //cola = new LinkedQueue();
+        cola = new LinkedQueue();
         break;
     default:
         cout << "OPCION INGRESADA NO VALIDA: INGRESE UN NUMERO VALIDO" << endl;

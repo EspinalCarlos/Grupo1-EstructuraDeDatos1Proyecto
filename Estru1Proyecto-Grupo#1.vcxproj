@@ -132,6 +132,7 @@
     <ClCompile Include="ArrayQueue.cpp" />
     <ClCompile Include="Estru1Proyecto-Grupo#1.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="LinkedQueue.cpp" />
     <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="TDACola.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="ArrayQueue.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="LinkedQueue.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="TDACola.h" />
