@@ -250,6 +250,7 @@ void menuColas() {
             delete cola;
         }
         if (temp != nullptr) {
+            temp = nullptr;
             delete temp;
         }
     }
