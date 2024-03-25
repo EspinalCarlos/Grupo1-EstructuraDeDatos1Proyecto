@@ -1,4 +1,4 @@
-
+﻿
 #include <iostream>
 using namespace std;
 
@@ -11,6 +11,147 @@ using namespace std;
 #include "ArrayQueue.h"
 #include "LinkedList.h"
 #include "LinkedQueue.h"
+#include "LinkedStack.h"
+#include "ArrayStack.h"
+
+
+void menuPilas() {
+    bool fin = true;
+
+    cout << "---------Stack---------" << endl;
+
+    do {
+        cout << "1. Trabajar con ArrayStack \n"
+            << "2. Trabajar con LinkedStacked \n"
+            << "3. Regresar al Menu Principal \n";
+
+        int seleccion = 0;
+        cin >> seleccion;
+
+        if (seleccion == 1) {
+            ArrayStack* pila = new ArrayStack();
+            bool salir1 = true;
+            do {
+                cout << "Operaciones del Stack: \n"
+                    << "1. Push \n"
+                    << "2. Pop \n"
+                    << "3. Peek \n"
+                    << "4. IsEmpty \n"
+                    << "5. PrintStack \n"
+                    << "6. Vaciar \n"
+                    << "7. Salir" << endl;
+                int seleccion1 = 0;
+                cin >> seleccion1;
+
+                switch (seleccion1) {
+                case 1: {
+                    cout << "Ingrese un caracter: ";
+                    char linea;
+                    cin >> linea;
+                    char* c = &linea;
+                    pila->push(c);
+                    break;
+                }
+
+                case 2:
+                    pila->pop();
+                    break;
+
+                case 3:
+                    pila->peek();
+                    break;
+
+                case 4:
+                    pila->isEmpty();
+                    break;
+
+                case 5:
+                    pila->printStack();
+                    break;
+
+                case 6:
+                    pila->vaciar();
+                    break;
+
+                case 7:
+                    salir1 = false;
+                    break;
+
+                default:
+                    break;
+                }
+            } while (salir1);
+
+            delete pila;
+
+        }
+        else if (seleccion == 2) {
+            LinkedStack* pila = new LinkedStack();
+            bool salir2 = true;
+            do {
+                cout << "Operaciones del Stack: \n"
+                    << "1. Push \n"
+                    << "2. Pop \n"
+                    << "3. Peek \n"
+                    << "4. IsEmpty \n"
+                    << "5. PrintStack \n"
+                    << "6. Vaciar \n"
+                    << "7. Salir" << endl;
+                int seleccion2 = 0;
+                cin >> seleccion2;
+
+                switch (seleccion2) {
+                case 1: {
+                    cout << "Ingrese un caracter: ";
+                    char linea;
+                    cin >> linea;
+                    char* c = &linea;
+                    pila->push(c);
+                    break;
+                }
+
+                case 2:
+                    pila->pop();
+                    break;
+
+                case 3:
+                    pila->peek();
+                    break;
+
+                case 4:
+                    pila->isEmpty();
+                    break;
+
+                case 5:
+                    pila->printStack();
+                    break;
+
+                case 6:
+                    pila->vaciar();
+                    break;
+
+                case 7:
+                    salir2 = false;
+                    break;
+
+                default:
+                    break;
+                }
+            } while (salir2);
+
+            delete pila;
+
+        }
+        else if (seleccion == 3) {
+            cout << "---------" << endl;
+            fin = false;
+        }
+        else {
+            cout << "Opci�n no v�lida" << endl;
+        }
+
+    } while (fin);
+}
 
 
 void menuPrincipal(){
@@ -219,6 +360,7 @@ int main(int argc, const char* argv[]){
                     cout << "\n--- Obtener siguiente de un indice ---\n";
                     cout << "Ingrese el indice que desea obtener: ";
                     cin >> indicePORINDEX;
+                    cout << endl;
                     if (indicePORINDEX > 0 && indicePORINDEX <= lista->getSize()-1)
                         cout << "Nombre del Alumno: " << dynamic_cast<Alumno*>(lista->siguiente(indicePORINDEX))->getNombre() << " Numero de Cuenta: " << dynamic_cast<Alumno*>(lista->siguiente(indicePORINDEX))->getNumeroCuenta() << endl;
                     else
@@ -237,10 +379,10 @@ int main(int argc, const char* argv[]){
                     cout << "\n--- Nulificacion de toda la lista ---\n";
                     if (!lista->vacia()){
                         lista->anula();
-                        cout << "Lista anulada correctamente\n";
+                        cout << "\nLista anulada correctamente\n";
                     }
                     else {
-                        cout << "La lista esta vacia, no hay nada que anular";
+                        cout << "\nLa lista esta vacia, no hay nada que anular\n";
                     }
                     break;
                 case 10:
@@ -253,7 +395,7 @@ int main(int argc, const char* argv[]){
 
             break;
         case 2:
-            //pilas
+            menuPilas();
             break;
         case 3:
             menuColas();
